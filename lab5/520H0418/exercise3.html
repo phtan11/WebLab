@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            text-align: center;
+        }
+        #game-table {
+            width: 300px;
+            height: 300px;
+            margin: auto;
+        }
+        .image-cell {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            float: left;
+        }
+        .image-cell img {
+            max-width: 100%;
+        }
+        #image-table {
+            width: 500px;
+            height: 200px;
+            margin: auto;
+        }
+    </style>
+    <script>
+        $(document).ready(function (){
+            
+            $("img").click(function (){
+            
+                var angle = (($(this).data('angle') || 0) + 90) %360;
+                $(this).css('transform','rotage('+ angle + 'deg)');
+                $(this).data('angle', angle);
+            });
+        });
+
+        function startDrag(event){
+            let id = event.target.id;
+            event.dataTransfer.setData('imageId', id);
+            console.log('Begin drag')
+        }
+
+        function allowDrop(event, receiver){
+            if(receiver.childElementCount === 0){
+                event.preventDefault();
+                console.log('Allow drop');
+            }
+           
+        }
+
+        function receiveData(event) {
+            event.preventDefault();
+            let id = event.dataTransfer.getData('imageId');
+            
+            let realImage = document.getElementById(id);
+            event.target.appendChild(realImage);
+        }
+    </script>
+</head>
+<body>
+    <h1>Xếp hình</h1>
+    <div id="game-table">
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)"></div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)"></div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)"></div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)"></div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)"></div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)"></div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)"></div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)"></div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)"></div>
+    </div>
+    <br>
+    <div id="image-table">
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)">
+            <img src="images/cntt_01.gif" id="image1" draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)">
+            <img src="images/cntt_02.gif" id="image2" draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)">
+            <img src="images/cntt_03.gif" id="image3" draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)">
+            <img src="images/cntt_04.gif" id="image4" draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)">
+            <img src="images/cntt_05.gif" id="image5" draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)">
+            <img src="images/cntt_06.gif" id="image6" draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)">
+            <img src="images/cntt_07.gif" id="image7" draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)">
+            <img src="images/cntt_08.gif" id="image8" draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)">
+            <img src="images/cntt_09.gif" id="image9" draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="image-cell" ondragover="allowDrop(event, this)" ondrop="receiveData(event)">
+            <img src="images/cntt_10.gif" id="image10" draggable="true" ondragstart="startDrag(event)">
+        </div>
+    </div>
+    
+</body>
+</html>

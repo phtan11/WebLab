@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /*  Gợi ý màu:
+
+            + Nền body: #fff8df
+            + Nút 'Register': #dd2c2c
+            + Nút 'Reset': #e3a73f
+            + Chữ báo lỗi (error message): #bc1313
+            + nền input khi hover: #fff5cf
+            + nền input khi focus: #f3de8e
+            + viền input khi focus: #d97000
+
+        */
+        *{
+            box-sizing: border-box;
+        }
+        body {
+            padding: 20px;
+            background-color:#fff8df ;
+        }
+        form{
+            background-color:white;
+            width:40%;
+            border-radius:15px;
+            padding: 12px;
+            margin: 0px auto;
+        }
+        .form-group{
+            margin-bottom: 8px;
+        }
+        .form-control{
+            width:90%;
+            border-radius: 6px;
+            border: 1px solid rgb(189, 188, 130);
+            padding: 8px;
+        }
+        .form-control:hover{
+            background-color:#fff5cf;
+        }
+        .form-control:focus{
+            background-color:#f3de8e;
+            outline: 1px solid #d97000;
+        }
+        .input-error{
+            color: #bc1313;
+            font-size:12px;
+        }
+        #toeic{
+            width:100%;
+        }
+        #country{
+            width:95%;
+        }
+        button{
+            outline: none;
+            border: none;
+            border-radius:8px;
+            color: white;
+            padding: 12px;
+        }
+        button[type="submit"]{
+            background-color: #dd2c2c;
+        }
+        button[type="submit"]:hover{
+            background-color: #942323;
+        }
+        button[type="reset"]{
+            background-color: #e3a73f;
+        }
+        button[type="reset"]:hover{
+            background-color: #81622d;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="http://web-tdtu.herokuapp.com/lab01/register.php">
+        <div class="content">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input class="form-control" id="name" type="text" placeholder="Full Name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input class="form-control" id="email" type="email" placeholder="Email">
+                <div class="input-error">Email address is not valid</div>
+            </div>
+            <div class="form-group">
+                <label for="birthday">Birthday</label>
+                <input class="form-control" id="birthday" type="date">
+            </div>
+            <div class="form-group">
+                <label for="birthtime">Birthtime</label>
+                <input class="form-control" id="birthtime" type="time">
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <div>
+                    <input id="male" type="radio" name="gender">
+                    <label for="male">Male</label>
+                    <input id="female" type="radio" name="gender">
+                    <label for="female">Female</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" class="form-control">
+                    <option style="font-weight: bold;">Select a country</option>
+                    <optgroup label="Asia">
+                        <option>Vietnam</option>
+                        <option>Laos</option>
+                        <option>Cambodia</option>
+                        <option>Singapore</option>
+                    </optgroup>
+                    <optgroup label="Europe">
+                        <option>France</option>
+                        <option>Belgium</option>
+                        <option>Italy</option>
+                        <option>Finland</option>
+                        <option>Ireland</option>
+                    </optgroup>
+                </select>
+                <div class="input-error">Please select a country</div>
+            </div>
+            <div class="form-group">
+                <label for="toeic">TOEIC</label>
+                <input id="toeic" type="range" min="5" max="990" step="5">
+            </div>
+            <div class="form-group">
+                <button type="submit">Register</button>
+                <button type="reset">Reset</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

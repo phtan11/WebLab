@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="exercise1.css">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .panel {
+            width: 300px;
+            height: 300px;
+        }
+        .panel div {
+            width: 30px;
+            height: 30px;
+            border: 1px solid black;
+            float: left;
+            cursor: pointer;
+        }
+        .color-info {
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <script>
+        /*let panel;
+        window.onload = () => {
+            panel = document.querySelector('.panel')
+            for (let i = 1; i <= 100; i++){
+
+                const r = Math.round(Math.random() * 255)
+                const g = Math.round(Math.random() * 255)
+                const b = Math.round(Math.random() * 255)
+                
+                const div = document.createElement('div')
+                    div.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
+                    
+                    panel.appendChild(div);
+            }
+        }*/
+        let prevColor = 'white'
+
+        $(document).ready(() => {
+            panel = $('.panel')
+            for (let i = 1; i <= 100; i++){
+                const r = Math.round(Math.random() * 255)
+                const g = Math.round(Math.random() * 255)
+                const b = Math.round(Math.random() * 255)
+
+                const div = $(`<div style = "background-color: rgb(${r}, ${g}, ${b})"></div>`)
+                panel.append(div);
+            }
+            $('.panel div').hover(e => {
+                let cell = $(e.target)
+                //let color = cell.style.backgroundColor
+                //document.body.style.backgroundColor = color
+                let color = cell.css('background-color')
+                //console.log(cell)
+                $('body').css('background-color', color)
+            
+                //let info = document.getElementsByClassName('color-info')[0]
+                //info.innerHTML = color;
+
+                $('.color-info').html(color)
+            })
+
+            $('.panel div').mouseleave(() => {
+                $('body').css('background-color', prevColor)
+            })
+            $('.panel div').click(e => {
+                let cell = $(e.target)
+                let color = cell.css('background-color')
+                prevColor = color
+
+                document.getElementById('alert-message')
+                $('#alert-message').fadeIn(2000)
+                setTimeout(() =>{
+                    $('#alert-message').fadeOut(1000)
+                },3000)
+            })
+        })
+    </script>
+    <div class="container">
+        <div class="color-info p-3 bg-dark text-light rounded w-50 mx-auto my-5 text-center">
+            Mã màu
+        </div>
+        <div class="panel mx-auto">
+
+        </div>
+        <div id="alert-message" style="display: none" class="alert alert-success text-center w-50 mx-auto mt-5">
+            Background color has been changed.
+        </div>
+    </div>    
+    <script src="exercise1.js"></script>
+</body>
+</html>

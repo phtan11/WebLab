@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="https://web-503073.herokuapp.com/lab01/register.php" method="POST">
+        <table>
+            <tr>
+                <td>Your name</td>
+                <td>
+                    <input type = "text" name="name" placeholder="Your name">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Email address</td>
+                <td>
+                    <input type = "email" name="email" placeholder="Email">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Birthday</td>
+                <td>
+                    <input type = "date" name="birthday"> 
+                </td>
+            </tr>
+
+            <tr>
+                <td>Birthtime</td>
+                <td>
+                    <input type= "time" name="birthtime"> 
+                </td>
+            </tr>
+
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type = "radio" name="gender" value = "male" checked>Male
+                    <input type = "radio" name="gender" value = "female"> Female
+                </td>
+            </tr>
+
+            <tr>
+                <td>From</td>
+                <td>
+                    <select name="country">
+                        <option>Select a country</option>
+                        <optgroup label="Asia">
+                            <option value="0">Vietnam</option>
+                            <option value="1">Laos</option>
+                            <option value="2">Cambodia</option>
+                            <option value="3">Singapore</option>
+                        </optgroup>
+
+                        <optgroup label="Europe">
+                            <option value="4">France</option>
+                            <option value="5">Belgium</option>
+                            <option value="6">Italy</option>
+                            <option value="7">Finland</option>
+                            <option value="8">Ireland</option>
+                        </optgroup>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td style ="vertical-align: top;">Favorite IDE</td> 
+                <td>
+                    <div>
+                        <input type = "checkbox" name ="favorite_ide[]" value="vs code">Visual Studio Code
+                    </div>
+    
+                    <div>
+                        <input type = "checkbox" name ="favorite_ide[]" value="sublime-text"> Sublime text
+                    </div>
+
+                    <div>
+                        <input type = "checkbox" name ="favorite_ide[]" value="eclipse"> Eclipse
+                    </div>
+
+                    <div>
+                        <input type = "checkbox" name ="favorite_ide[]" value="atom"> Atom
+                    </div>
+
+                    <div>
+                        <input type = "checkbox" name ="favorite_ide[]" value="intellij"> Intellij Idea
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>TOEIC Score</td>
+                <td>
+                    <input type = "range" min="5" max="990" step="5" name="toeic">
+                </td>
+            </tr>
+
+            <tr>
+                <td style ="vertical-align: top;">Message</td>
+                <td>
+                    <textarea name = "message" id="" cols ="30" rows = "8"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div>
+                        <button>Register</button>
+                        <button>Again</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

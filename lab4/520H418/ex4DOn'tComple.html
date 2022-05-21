@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Table</title>
+    <!-- <script src = "ex4.js"></script> -->
+</head>
+<body>
+
+<style>
+    *{
+        box-sizing: border-box;
+    }
+
+    select{
+        float: left;
+    }
+    img{
+        float: left;
+    }
+</style>
+
+
+<select id="imageList" name="imageList" size="10" onchange = "selectImage()">
+    <option value="pic_001.jpg">pic_001.jpg</option>
+    <option value="pic_002.jpg">pic_002.jpg</option>
+    <option value="pic_003.jpg">pic_003.jpg</option>
+    <option value="pic_004.jpg">pic_004.jpg</option>
+    <option value="pic_005.jpg">pic_005.jpg</option>
+    <option value="pic_006.jpg">pic_006.jpg</option>
+    <option value="pic_007.jpg">pic_007.jpg</option>
+    <option value="pic_008.jpg">pic_008.jpg</option>
+    <option value="pic_009.jpg">pic_009.jpg</option>
+    <option value="pic_010.jpg">pic_010.jpg</option>
+</select>
+<img id ="imageView" src="images/pic_001.jpg">
+
+<button type="button" onclick = "previousImage()">Back</button>
+<button type="button" >Start slideshow</button>
+<button  type="button" onclick = "nextImage()">Next</button>
+
+<p>pic_001.jpg (1/10)</p>
+
+
+<script>
+    var imageIndex = 0;
+    let imageList = document.getElementById("imageList");
+    let size = imageList.options.length;
+
+
+    function selectImage(){
+        let index = imageList.selectedIndex +1 ;
+        displayImage(index);
+    }
+
+
+    function previousImage(){
+        imageIndex --;
+        if(imageIndex === -1){ // la dang mun back ve cuoi cua hinh
+            imageIndex = size - 1;
+        }
+        let imageName = imageList.options[imageIndex].value;
+        console.log(imageName);
+
+        //hien thi
+        displayImage(imageIndex);
+    }
+
+    function nextImage(){
+        imageIndex ++;
+        if(imageIndex === size){
+            imageIndex = 0;
+        }
+        let imageName = imageList.options[imageIndex].value;
+        console.log(imageName);
+
+        //hien thi
+        displayImage(imageIndex);
+    }
+
+    function displayImage(index){
+        let imageView = document.getElementById("imageView");
+        let pTag = document.getElementsByTagName("p")[0];
+        let imageName = imageList.options[index].value;
+        let url = 'images/' + imageName;
+        imageView.setAttribute("src", url);
+
+        pTag.innerHTML = imageName+'(' + index + '/' + size + ')';
+    }
+</script>
+</body>
+</html>
